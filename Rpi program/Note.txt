@@ -1,0 +1,23 @@
+Modification:
+#console=serial0,115200
+#/boot/cmdline.txt
+(for more information regarding GPIO, visit http://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/)
+
+For information about socket programming, visit http://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html
+
+Compile CPP code:
+g++ -o particle particle.cpp ppmIO.c
+
+run cpp code: 
+./particle host's ip address 51717
+
+Make bash script executable:
+chmod +x particle.sh
+
+To terminate the bash process:
+ps;
+kill;
+jobs;
+pkill;
+
+Always run GPIOtest first and then run dynamicUserInput.

@@ -1,0 +1,30 @@
+compile: gcc -o server server.c ppmIO.c -lm `mysql_config --cflags --libs`
+
+run: ./server 51717
+
+convert picture: 
+convert pf7.ppm pf7.jpg
+
+For further information about connecting c with sql, visit: http://zetcode.com/db/mysqlc/
+
+SQL:
+select column from table
+select distinct
+where=if
+逻辑符号可以在where的教程处找到
+ASC DESC
+Like: [abcd]表示a或b或c或d
+如果非，写在框里面
+in 表示等于多个的时候
+between 表示一个range
+最后三个有空再看
+
+进入SQL:mysql -u jhu20 -p
+password: yuio3fzkd
+use yingli
+show databases
+update set
+
+show columns from
+truncate table robotLocation;
+

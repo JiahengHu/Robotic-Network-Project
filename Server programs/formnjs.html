@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Online Robot Operator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Jiaheng Hu">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<style>
+			.margin {
+    			     	margin-top: 20px;
+    				margin-bottom: 20px;
+   			 	margin-right: 0px;
+   				margin-left: 70px;
+			}
+
+			.picdiv{
+    				height: 570px;
+    				width: 530px;
+				border:1px solid black;;
+			}
+			.bigbutton {
+    			     	margin-top: 20px;
+    				margin-bottom: 20px;
+   			 	margin-right: 0px;
+   				margin-left: 180px;
+			}
+			.smallbutton {
+    			     	margin-top: 0px;
+    				margin-bottom: 0px;
+   			 	margin-right: 20px;
+   				margin-left: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Online Robot Operator</h1>
+	
+		  <p>Enter the control command for the robot.</p>
+						
+				<form class="well">
+				 <fieldset>
+				 <legend>Robot Command</legend>
+
+				<div class="form-group">
+ 				 <label for="sel1">Robot list:</label>
+  				<select class="form-control" id="rob" multiple>
+  				  <option>Robot 1</option>
+ 				   <option>Robot 2</option>
+				    <option>Robot 3</option>
+ 				   <option>Robot 4</option>
+				<option>Robot 5</option>
+ 				 </select>
+				<p class="help-block">Select the robot you want to get position</p>
+				 <div class="form-actions">
+ 					<button class="btn btn-primary">Submit</button>
+				 </div>
+				</div> 
+
+				 </div>
+				 
+				 </fieldset>
+				</form>
+
+
+
+
+
+				<div class="container">
+				<div class="row">
+				<div class="picdiv col-lg-6" id="image">
+				<img id = "picture" src="result.png" alt="Robot path" style="width:500px;height:500px;" class="img-rounded">
+				<br>
+				<button class="btn btn-success margin" id="B1">Start Animation</button>
+				<button class="btn btn-danger margin" id="B2">Stop Animation</button>
+				</div>
+
+
+
+				<div class="col-lg-6 container" id="control">
+				<div class="row">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				</div>
+				<div class="row">
+				<button class="btn btn-primary col-lg-4 bigbutton" id="forward">Go Forward</button>
+				</div>
+				<div class="row">
+				<button class="btn btn-primary col-lg-3 smallbutton" id="left">Turn Left</button>
+				<button class="btn btn-info col-lg-3 smallbutton" id="stop">Stop</button>
+				<button class="btn btn-primary col-lg-3 smallbutton" id="right">Turn Right</button>
+				
+				</div>	
+				<div class="row">			
+				<button class="btn btn-primary col-lg-4 bigbutton" id="backward">Go Backward</button>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+
+
+
+	<script>
+	$("#B1").click(function(f) {
+		f.preventDefault();
+		$("#picture").show();	
+		interval=setInterval(function()
+		{	
+			/*$.ajax({
+				url: "/update",
+				type: "GET",
+				success: function(data) {
+					if(data=="diff"){
+						$("#picture").attr('src','./result.png?'+new Date().getTime());				
+					}
+				},
+				error: function(e) {
+					alert("There is an error: "+e.status+": "+e.statusText + "\n\nIf you are looking at the file posted a part of the assignment description, the AJAX response is not provided, it is your task to implement it. If you served the file from your own server, it did not respond correctly to the AJAX request for \"/update\"");
+				}
+			});*/
+			$("#picture").attr('src','./result.png?'+new Date().getTime());	
+		}, 2000);
+	});
+
+	$("#B2").click(function(f) {
+		f.preventDefault();
+		clearInterval(interval);
+	});
+
+	$("#left").click(function(f) {
+		f.preventDefault();
+		$.ajax({
+			url: "/move",
+			data: "c=a",
+			type: "GET",
+			success: function(data) {
+				;
+			},
+			error: function(e) {
+				alert("Turn left not implemented: "+e.status+": "+e.statusText + "\n\nIf you are looking at the file posted a part of the assignment description, the AJAX response is not provided, it is your task to implement it. If you served the file from your own server, it did not respond correctly to the AJAX request for \"/move\"");
+			}
+		});
+	});
+
+	$("#right").click(function(f) {
+		f.preventDefault();
+		$.ajax({
+			url: "/move",
+			data: "c=d",
+			type: "GET",
+			success: function(data) {
+				;
+			},
+			error: function(e) {
+				alert("Turn right not implemented: "+e.status+": "+e.statusText + "\n\nIf you are looking at the file posted a part of the assignment description, the AJAX response is not provided, it is your task to implement it. If you served the file from your own server, it did not respond correctly to the AJAX request for \"/move\"");
+			}
+		});
+	});
+
+	$("#forward").click(function(f) {
+		f.preventDefault();
+		$.ajax({
+			url: "/move",
+			data: "c=w",
+			type: "GET",
+			success: function(data) {
+				;
+			},
+			error: function(e) {
+				alert("Forward not implemented: "+e.status+": "+e.statusText + "\n\nIf you are looking at the file posted a part of the assignment description, the AJAX response is not provided, it is your task to implement it. If you served the file from your own server, it did not respond correctly to the AJAX request for \"/move\"");
+			}
+		});
+	});
+
+	$("#backward").click(function(f) {
+		f.preventDefault();
+		$.ajax({
+			url: "/move",
+			data: "c=s",
+			type: "GET",
+			success: function(data) {
+				;
+			},
+			error: function(e) {
+				alert("Backward not implemented: "+e.status+": "+e.statusText + "\n\nIf you are looking at the file posted a part of the assignment description, the AJAX response is not provided, it is your task to implement it. If you served the file from your own server, it did not respond correctly to the AJAX request for \"/move\"");
+			}
+		});
+	});
+
+	$("#stop").click(function(f) {
+		f.preventDefault();
+		$.ajax({
+			url: "/move",
+			data: "c=x",
+			type: "GET",
+			success: function(data) {
+				;
+			},
+			error: function(e) {
+				alert("Stop not implemented: "+e.status+": "+e.statusText + "\n\nIf you are looking at the file posted a part of the assignment description, the AJAX response is not provided, it is your task to implement it. If you served the file from your own server, it did not respond correctly to the AJAX request for \"/move\"");
+			}
+		});
+	});
+	</script>
+
+	</body>
+</html>

@@ -1,0 +1,42 @@
+Node,js:
+
+Use the exports keyword to make properties and methods available outside the module file.
+
+req.url
+
+var q = url.parse(req.url, true).query;
+var txt = q.year + " " + q.month;
+
+For information regarding files: File system
+
+URL:parse, don't understand
+
+var uc = require('upper-case'); 
+res.write(uc("Hello World!"));
+
+data:MySQL
+	MongoDB (noSQL)
+
+
+
+HTML:
+ <a href="https://www.w3schools.com">This is a link</a> 
+ <img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142"> 
+			  alternative text
+
+ <br> element (which indicates a line break).
+
+<html lang="en-US">
+
+ <p title="I'm a tooltip">
+This is a paragraph.
+</p> 
+
+The <hr> element is used to separate content (or define a change) in an HTML page:
+
+The text inside a <pre> element is displayed in a fixed-width font (usually Courier), and it preserves both spaces and line breaks:
+
+style:color, Font, Size
+
+<div class="well well-sm">Small Well</div>
+<div class="well well-lg">Large Well</div>
